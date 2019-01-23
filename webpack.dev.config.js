@@ -31,7 +31,7 @@ module.exports = {
     port: 9999,
     contentBase: path.join(__dirname, "./dist"),
     historyApiFallback: true,
-    host: "172.18.37.61",
+    host: "192.168.31.152",
     hot: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
