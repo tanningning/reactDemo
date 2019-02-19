@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, "./dist"),
     filename: "bundle.js"
   },
+  devtool: 'inline-source-map',
   /*src文件夹下面的以.js结尾的文件，要使用babel解析*/
   /*cacheDirectory是用来缓存编译结果，下次编译加速*/
   module: {
@@ -24,14 +25,16 @@ module.exports = {
     alias: {
       pages: path.join(__dirname, "src/pages"),
       component: path.join(__dirname, "src/component"),
-      router: path.join(__dirname, "src/router")
+      router: path.join(__dirname, "src/router"),
+      actions: path.join(__dirname, "src/redux/actions"),
+      reducers: path.join(__dirname, "src/redux/reducers"),
     }
   },
   devServer: {
     port: 9999,
     contentBase: path.join(__dirname, "./dist"),
     historyApiFallback: true,
-    host: "172.18.37.61",
+    host: "127.0.0.1",
     hot: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]

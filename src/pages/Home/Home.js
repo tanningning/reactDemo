@@ -15,7 +15,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        this is home~
+        this is home1~
         <br />
         当前计数：
         {this.state.count}
