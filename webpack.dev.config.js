@@ -27,7 +27,10 @@ const devConfig = {
   devServer: {
     contentBase: path.join(__dirname, "./dist"),
     historyApiFallback: true,
-    host: "127.0.0.1"
+    host: "127.0.0.1",
+    proxy: {
+      "/api/*": "http://localhost:8090/$1"
+    }
   },
   plugins: [
     new webpack.DefinePlugin({
