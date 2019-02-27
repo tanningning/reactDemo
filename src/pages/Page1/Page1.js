@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import style from "./Page1.css";
+import "./Page1.scss";
 import imageUrl from "./images/timg.jpg"
 
 export default class Page1 extends Component {
