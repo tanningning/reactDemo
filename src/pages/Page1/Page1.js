@@ -7,7 +7,7 @@ export default class Page1 extends Component {
     return (
       <div className="page-box">
         this is Page1~
-        <img src={imageUrl} />>
+        <img src={imageUrl} />
       </div>
     );
   }

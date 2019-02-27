@@ -1,6 +1,6 @@
 const merge = require("webpack-merge");
 const path = require("path");
-
+const webpack = require("webpack");
 const commonConfig = require("./webpack.common.config.js");
 
 const devConfig = {
@@ -19,16 +19,21 @@ const devConfig = {
   module: {
     rules: [
       {
-        test: /\.(css|scss|less)$/,
-        use: ["style-loader", "css-loader","postcss-loader"]
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"]
       }
     ]
   },
   devServer: {
     contentBase: path.join(__dirname, "./dist"),
     historyApiFallback: true,
-    host: "0.0.0.0"
-  }
+    host: "127.0.0.1"
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      MOCK: true
+    })
+  ]
 };
 
 module.exports = merge({
