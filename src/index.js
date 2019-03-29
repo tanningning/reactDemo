@@ -1,36 +1,23 @@
-import React from "react";
-import ReactDom from "react-dom";
-import { AppContainer } from "react-hot-loader";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import { BrowserRouter as Router } from "react-router-dom";
-import App from "component/App/App";
-// import "./mock/mock";
+import '@babel/polyfill'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from 'component/App/App';
+import registerServiceWorker from './registerServiceWorker';
+import {BrowserRouter} from 'react-router-dom'
+import { Provider} from 'mobx-react'
+import { LocaleProvider } from 'antd'
+import zh_CN from 'antd/lib/locale-provider/zh_CN'
+import store from './store'
 
-if (MOCK) {
-  require("./mock/mock");
-}
-
-/*初始化 */
-renderWithHotReload(App);
-
-/*热更新 */
-if (module.hot) {
-  module.hot.accept("component/App/App", () => {
-    const nextApp = require("component/App/App").default;
-    renderWithHotReload(nextApp);
-  });
-}
-
-function renderWithHotReload(RootElement) {
-  ReactDom.render(
-    <AppContainer>
-      <Provider store={store}>
-        <Router>
-          <RootElement />
-        </Router>
+//打包时，用的HashRouter并加上了basename，因为放在服务器的二级目录下
+ReactDOM.render(
+  <BrowserRouter>
+    <LocaleProvider locale={zh_CN}>
+      <Provider {...store}>
+        <App/>
       </Provider>
-    </AppContainer>,
-    document.getElementById("app")
-  );
-}
+    </LocaleProvider>
+  </BrowserRouter>,
+  document.getElementById('app'));
+registerServiceWorker();

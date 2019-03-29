@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import Nav from "component/Nav/Nav";
-import getRouter from "router/router";
-
+import PrivateRoute from 'component/PrivateRoute'
+import { Route, Switch } from "react-router-dom";
+import Login from "routes/Login/index";
+import Index from "routes/Index/index";
+import "./App.css";
+import "assets/font/iconfont.css";
 
 export default class App extends Component {
-    render(){
-        return (
-            <div>
-                <Nav/>
-                {getRouter()}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <Switch>
+        <Route path="/login" component={Login} />
+        <PrivateRoute path="/" component={Index} />
+      </Switch>
+    );
+  }
 }
